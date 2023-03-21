@@ -85,7 +85,7 @@ class Caini extends CI_Controller
     }
     public function editeaza_caine($NrCrt)
     {
-        $caine = $this->Caini_model->getCaineInfo($NrCrt);
+        $caine = $this->Caini_model->getCaineInfo($NrCrt); 
         $data = array(
             'dogs' => $caine
         );
