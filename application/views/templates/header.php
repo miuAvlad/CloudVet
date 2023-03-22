@@ -8,6 +8,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="description" content="">
   <meta name="author" content="">
+  <!--  favicon png -->
+  <link rel="icon" href="<?php echo base_url(); ?>assets/favicon.png">
   <title>CloudVet</title>
 
   <!-- Custom fonts for this template-->

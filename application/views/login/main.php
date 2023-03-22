@@ -10,6 +10,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <title>CloudVet</title>
+    <link rel="icon" href="<?php echo base_url(); ?>assets/favicon.png">
     <link rel="stylesheet" href="<?php echo site_url(); ?>assets/all.css">
     <link rel="stylesheet" href="<?php echo site_url(); ?>assets/toast/toast.min.css">
     <script src="<?php echo site_url(); ?>assets/toast/jqm.js"></script>
