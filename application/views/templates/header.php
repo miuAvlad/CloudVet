@@ -13,8 +13,8 @@
   <!-- Custom fonts for this template-->
   <link href="<?php echo base_url(); ?>assets/theme/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
   <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
-  <link rel="stylesheet"  type="text/css"  href="<?php echo base_url(); ?>assets/jquery.dataTables.min.css" />
-  <link rel="stylesheet"  type="text/css"  href="<?php echo base_url(); ?>assets/buttons.dataTables.min.css" />
+  <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>assets/jquery.dataTables.min.css" />
+  <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>assets/buttons.dataTables.min.css" />
   <!-- Custom styles for this template-->
   <link href="<?php echo base_url(); ?>assets/theme/css/sb-admin-2.min.css" rel="stylesheet">
 
@@ -36,7 +36,7 @@
           <i style="color:lawngreen;" class="fas fa-dog"></i>
         </div> -->
         <!-- <div class="sidebar-brand-text mx-3">CloudVet <sup>1.0</sup></div> -->
-        <img src="<?php echo base_url();?>assets/logo.png" width="100px">
+        <img src="<?php echo base_url(); ?>assets/logo.png" width="100px">
       </a>
 
 
@@ -201,7 +201,7 @@
         <script src="<?php echo base_url(); ?>assets/toastr/toastr.min.js"></script>
 
 
-        
+
         <script src="<?php echo base_url(); ?>assets/jquery.dataTables.min.js"></script>
         <script src="<?php echo base_url(); ?>assets/dataTables.buttons.min.js"></script>
         <script src="<?php echo base_url(); ?>assets/buttons.html5.min.js"></script>
