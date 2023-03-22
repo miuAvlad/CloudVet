@@ -75,10 +75,10 @@ $query_builder = TRUE;
 
 $db['default'] = array(
 	'dsn'	=> '',
-	'hostname' => 'localhost',
-	'username' => 'root',
-	'password' => '',
-	'database' => 'vlad_test',
+	'hostname' => '148.251.75.181',
+	'username' => 'cloudvet_user',
+	'password' => 'V38sg8x3_',
+	'database' => 'cloudvet_db',
 	'dbdriver' => 'mysqli',
 	'dbprefix' => '',
 	'pconnect' => FALSE,
