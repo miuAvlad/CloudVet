@@ -34,18 +34,18 @@
                         <div class="form-group row">
                             <div class="col-sm-6 mb-3 mb-sm-0">
                                 <label>Nume</label>
-                                <input type="text" class="form-control form-control-user" name="user_nume" required>
+                                <input type="text" class="form-control form-control-user" name="user_nume" required minlength="4">
                             </div>
                             <div class="col-sm-6">
                                 <label>Email</label>
-                                <input type="text" class="form-control form-control-user" name="user_email" required >
+                                <input type="email" class="form-control form-control-user" name="user_email" required >
                             </div>
                         </div>
 
                         <div class="form-group row">
                             <div class="col-sm-6 mb-3 mb-sm-0">
                                 <label>Parola</label>
-                                <input type="text" class="form-control form-control-user" name="user_parola" required>
+                                <input type="password" class="form-control form-control-user" name="user_parola" required minlength="4">
                             </div>
                         </div>
 

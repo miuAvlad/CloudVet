@@ -3,7 +3,7 @@
 
     <!-- Page Heading -->
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
-        <h1 class="h3 mb-0 text-gray-800">Editeaza utilizator <?= $user->id_user ?></h1>
+        <h1 class="h3 mb-0 text-gray-800">Editeaza utilizator: <b><?= $user->user_nume ?></b></h1>
     </div>
 
     <div class="row">
@@ -30,18 +30,18 @@
                         <div class="form-group row">
                             <div class="col-sm-6 mb-3 mb-sm-0">
                                 <label>Nume</label>
-                                <input type="text" class="form-control form-control-user" name="user_nume" value="<?= $user->user_nume ?>">
+                                <input type="text" class="form-control form-control-user" name="user_nume" value="<?= $user->user_nume ?>" required minlength="4">
                             </div>
                             <div class="col-sm-6">
                                 <label>Email</label>
-                                <input type="text" class="form-control form-control-user" name="user_email" value="<?= $user->user_email ?>">
+                                <input type="email" class="form-control form-control-user" name="user_email" value="<?= $user->user_email ?>" required>
                             </div>
                         </div>
 
                         <div class="form-group row">
                             <div class="col-sm-6 mb-3 mb-sm-0">
-                                <label>Parola</label>
-                                <input type="text" class="form-control form-control-user" name="user_parola" value="<?= $user->user_password ?>">
+                                <label>Parola (completeaza parola noua pentru resetare)</label>
+                                <input type="text" class="form-control form-control-user" name="user_parola">
                             </div>
                         </div>
 

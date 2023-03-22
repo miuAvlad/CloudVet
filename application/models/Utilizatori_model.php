@@ -40,9 +40,11 @@ class Utilizatori_model extends CI_Model
         $this->db->insert('users', $data);
         return $this->db->affected_rows();
     }
-    public function detectUser($data)
+    public function detectUser($input_email)
     {
-        $querry=$this->db->get_where('users', $data);
+        $this->db->like('user_email', $input_email);
+        $querry = $this->db->get('users');
+     
         if ($querry->row()>0) {
             return true;
         }

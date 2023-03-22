@@ -53,6 +53,7 @@ class Utilizatori extends CI_Controller
     {
 
         $user_info = $this->Utilizatori_model->getUserInfo($id_user);
+
         $data = array(
             'user' => $user_info
         );
@@ -65,16 +66,20 @@ class Utilizatori extends CI_Controller
 
     function update_utilizator($id_user)
     {
-
-        $noua_parola = $this->input->post('user_parola');
         $noul_email = $this->input->post('user_email');
         $noul_nume = $this->input->post('user_nume');
 
         $dataForUpdate = array(
-            'user_password' => $noua_parola,
             'user_email' => $noul_email,
             'user_nume' => $noul_nume
         );
+
+        $noua_parola = $this->input->post('user_parola');
+        $noua_parola =  hash('sha256', SALTKEY.$noua_parola);
+        if($this->input->post('user_parola') != "" && $this->input->post('user_parola') != null){
+            $dataForUpdate["user_password"] = $noua_parola;
+        }
+       
 
         $result = $this->Utilizatori_model->updateUserInfo($id_user, $dataForUpdate);
 
@@ -113,10 +118,10 @@ class Utilizatori extends CI_Controller
              'user_nume' => $input_nume
          );
          //insert data to database, return 1 if succesful
-         $result=$this->Utilizatori_model->detectUser($dataToAdd);
+         $result=$this->Utilizatori_model->detectUser($input_email);
          if ($result) {
              
-             $this->session->set_flashdata('error', 'Utilizatorul deja existent!');
+             $this->session->set_flashdata('error', 'Adresa de email corespunde deja unui utilizator!');
              redirect(base_url() . 'utilizatori/adauga_utilizator/' . $id_user);
          } else {
              
