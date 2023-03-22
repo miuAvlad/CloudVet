@@ -22,10 +22,13 @@ class Dashboard extends CI_Controller
 
         $nrUsers = $this->Dashboard_model->getCountUsers();
 
-        
+        $nrCainiPerLuna = $this->Dashboard_model->getNrCainiPerLuna();
+        // echo json_encode($nrCainiPerLuna);
+        // die();
         $data = array(
             'numar_users' => $nrUsers,
-            'numar_caini' =>  $this->Dashboard_model->getCountCaini()
+            'numar_caini' =>  $this->Dashboard_model->getCountCaini(),
+            'nrCainiPerLuna' => $nrCainiPerLuna
         );
 
         $this->load->view('templates/header');

@@ -66,7 +66,8 @@ class Caini extends CI_Controller
             'DeparazitareInterna' =>  $deparazitare_interna,
             'DeparazitareExterna' => $deparazitare_externa,
             'Deces' => $deces ,
-            'TelefonApartinator' => $telefon_apartinator
+            'TelefonApartinator' => $telefon_apartinator,
+            'DataAdaugarii' => date("Y-m-d")
         );
 
         //remove empty params from array so we dont have 0000-000-000 in db

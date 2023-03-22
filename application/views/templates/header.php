@@ -31,11 +31,12 @@
     <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion " id="accordionSidebar">
 
       <!-- Sidebar - Brand -->
-      <a class="sidebar-brand d-flex align-items-center justify-content-center" href="/home/">
-        <div class="sidebar-brand-icon rotate-n-15">
+      <a class="sidebar-brand d-flex align-items-center justify-content-center" href="<?= base_url(); ?>">
+        <!-- <div class="sidebar-brand-icon rotate-n-15">
           <i style="color:lawngreen;" class="fas fa-dog"></i>
-        </div>
-        <div class="sidebar-brand-text mx-3">CloudVet <sup>1.0</sup></div>
+        </div> -->
+        <!-- <div class="sidebar-brand-text mx-3">CloudVet <sup>1.0</sup></div> -->
+        <img src="<?php echo base_url();?>assets/logo.png" width="100px">
       </a>
 
 
