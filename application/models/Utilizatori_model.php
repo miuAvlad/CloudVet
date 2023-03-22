@@ -48,4 +48,25 @@ class Utilizatori_model extends CI_Model
         }
         return false;
     }
+
+    public function getDataTable()
+    {
+        $result=$this->db->get('users')->result();
+        $data=array();
+        $i=0;
+        foreach($result as $val)
+        {
+            $data[]=array(
+                $i,
+                $val->user_email,
+                $val->user_nume,
+                $val->user_password
+            );
+            $i++;
+        }
+        
+        $output=array(
+            "data"=>$data);
+        return $output;
+    }
 }

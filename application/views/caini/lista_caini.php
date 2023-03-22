@@ -100,3 +100,11 @@
         </div>
     </div>
 </div>
+
+<script>
+    $(document).ready(function () {
+        //datatable initialization
+        $("#cainiTable").dataTable({
+        });
+    });
+</script>

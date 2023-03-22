@@ -102,6 +102,7 @@ class Utilizatori extends CI_Controller
     {
          // sotcare date input in variabile
          $input_parola = $this->input->post('user_parola');
+         $input_parola =  hash('sha256', SALTKEY.$input_parola);
          $input_email = $this->input->post('user_email');
          $input_nume = $this->input->post('user_nume');
  
@@ -124,4 +125,5 @@ class Utilizatori extends CI_Controller
              redirect(base_url() . 'utilizatori/adauga_utilizator/' . $id_user);
          }
     }
+  
 }

@@ -64,3 +64,11 @@
         </div>
     </div>
 </div>
+
+<script>
+    $(document).ready(function () {
+        //datatable initialization
+        $("#utilizatoriTable").dataTable({
+        });
+    });
+</script>

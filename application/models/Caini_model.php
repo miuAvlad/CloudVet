@@ -42,4 +42,9 @@ class Caini_model extends CI_Model
         }
         return false;
     }
+    public function getDataTable(){
+        $this->db->select('*');
+        $this->db->from('dogs');
+        return $this->db->get('dogs');
+    }
 }
