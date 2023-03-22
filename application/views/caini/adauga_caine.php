@@ -28,44 +28,43 @@
 
                     <form method="POST" action="<?php echo base_url() ?>caini/add_caine/">
                         <div class="form-group row">
+                            <div class="col-sm-6">
+                                <label>Numar cip (obligatoriu)</label>
+                                <input type="text" class="form-control form-control-user" name="NrCip" required>
+                            </div>
                             <div class="col-sm-6 mb-3 mb-sm-0">
-                                <label>Data nastere</label>
+                                <label>Numar boxa</label>
+                                <input type="text" class="form-control form-control-user" name="NrBoxa">
+                            </div>
+
+                            <div class="col-sm-6 mb-3 mb-sm-0">
+                                <label>Data nastere (obligatoriu)</label>
                                 <input type="date" class="form-control form-control-user" name="DataNastere" required>
                             </div>
+                        </div>
+                        <div class="form-group row">
                             <div class="col-sm-6">
                                 <label>Data intrare adapost </label>
                                 <input type="date" class="form-control form-control-user" name="DataIntrareAdapost">
                             </div>
-                        </div>
-                        <div class="form-group row">
+
+
                             <div class="col-sm-6 mb-3 mb-sm-0">
-                                <label>Iesire adapost</label>
-                                <input type="date" class="form-control form-control-user" name="IesireAdapost" >
+                                <label>Data iesire adapost</label>
+                                <input type="date" class="form-control form-control-user" name="IesireAdapost">
                             </div>
-                            <div class="col-sm-6">
-                                <label>Numar cip </label>
-                                <input type="text" class="form-control form-control-user" name="NrCip" required>
-                            </div>
+
                         </div>
-                        <div class="form-group row">
-                            <div class="col-sm-6 mb-3 mb-sm-0">
-                                <label>Numar boxa</label>
-                                <input type="text" class="form-control form-control-user" name="NrBoxa" >
-                            </div>
-                            <div class="col-sm-6">
-                                <label>Nume apartinator </label>
-                                <input type="text" class="form-control form-control-user" name="NumeApartinator" required>
-                            </div>
-                        </div>
+
 
                         <div class="form-group row">
                             <div class="col-sm-6 mb-3 mb-sm-0">
                                 <label>Vaccin antirabic</label>
-                                <input type="date" class="form-control form-control-user" name="VaccinareAntiRabica" >
+                                <input type="date" class="form-control form-control-user" name="VaccinareAntiRabica">
                             </div>
                             <div class="col-sm-6">
                                 <label>Vaccin polivalent </label>
-                                <input type="date" class="form-control form-control-user" name="VaccinPolivalent" >
+                                <input type="date" class="form-control form-control-user" name="VaccinPolivalent">
                             </div>
                         </div>
 
@@ -76,22 +75,28 @@
                             </div>
                             <div class="col-sm-6">
                                 <label>Deparazitare externa</label>
-                                <input type="date" class="form-control form-control-user" name="DeparazitareExterna" >
+                                <input type="date" class="form-control form-control-user" name="DeparazitareExterna">
                             </div>
                         </div>
 
                         <div class="form-group row">
                             <div class="col-sm-6 mb-3 mb-sm-0">
-                                <label>Telefon apartinator</label>
+                                <label>Telefon apartinator (obligatoriu)</label>
                                 <input type="text" class="form-control form-control-user" name="TelefonApartinator" required>
                             </div>
                             <div class="col-sm-6">
+                                <label>Nume apartinator (obligatoriu)</label>
+                                <input type="text" class="form-control form-control-user" name="NumeApartinator" required>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-sm-6">
                                 <label>Deces </label>
-                                <input type="date" class="form-control form-control-user" name="Deces" >
+                                <input type="date" class="form-control form-control-user" name="Deces">
                             </div>
                         </div>
 
-                        
+
                         <button class="btn btn-success" type="submit">Actualizeaza informatii</button>
                     </form>
 

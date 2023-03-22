@@ -32,16 +32,19 @@ class Caini_model extends CI_Model
         $this->db->insert('dogs', $data);
         return $this->db->affected_rows();
     }
-    public function detectCaine($data)
+
+    public function detectCaine($numar_cip)
     {
 
-
-        $querry = $this->db->get_where('dogs', $data);
+        $this->db->like('NrCip', $numar_cip);
+        $querry = $this->db->get('dogs');
+  
         if ($querry->row() > 0) {
             return true;
         }
         return false;
     }
+
     public function getDataTable(){
         $this->db->select('*');
         $this->db->from('dogs');

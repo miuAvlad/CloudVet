@@ -15,7 +15,7 @@
                 </div>
                 <div class="card-body">
                     <div class="table-responsive">
-                        <table class="table table-bordered" id="cainiTable" width="100%" cellspacing="0">
+                        <table class="table table-bordered table-striped" id="cainiTable" width="100%" cellspacing="0">
                             <thead>
                                 <tr>
                                     <th>#</th>
@@ -58,17 +58,16 @@
                                 <!-- valori din baza de date -->
                                 <?php foreach ($caini as $caine) : ?>
                                     <tr>
-                                        <td><?= $caine->NrCrt;?></td>
-                                        <td><?= $caine->DataNastere; ?></td>
-                                        <td><?= $caine->DataIntrareAdapost; ?></td>
-                                        <td><?= $caine->VaccinareAntiRabica; ?></td>
-                                        <td><?= $caine->VaccinarePolivalenta; ?></td>
-                                        <td><?= $caine->DeparazitareInterna; ?></td>
-                                        <td><?= $caine->DeparazitareExterna; ?></td>
+                                        <td><?= $caine->NrCrt; ?></td>
+                                        <td><?= ($caine->DataNastere) ? date("d.m.Y", strtotime($caine->DataNastere)) : "-"; ?></td>
+                                        <td><?= ($caine->DataIntrareAdapost) ? date("d.m.Y", strtotime($caine->DataIntrareAdapost)) : "-"; ?></td>
+                                        <td><?= ($caine->VaccinareAntiRabica) ? date("d.m.Y", strtotime($caine->VaccinareAntiRabica)) : "-"; ?></td>
+                                        <td><?= ($caine->VaccinarePolivalenta) ? date("d.m.Y", strtotime($caine->VaccinarePolivalenta)) : "-"; ?></td>
+                                        <td><?= ($caine->DeparazitareInterna) ? date("d.m.Y", strtotime($caine->DeparazitareInterna)) : "-"; ?></td>
+                                        <td><?= ($caine->DeparazitareExterna) ? date("d.m.Y", strtotime($caine->DeparazitareExterna)) : "-"; ?></td>
+                                        <td><?= ($caine->Deces) ? date("d.m.Y", strtotime($caine->Deces)) : "-"; ?></td>
+                                        <td><?= ($caine->IesireAdapost) ? date("d.m.Y", strtotime($caine->IesireAdapost)) : "-"; ?></td>
 
-                                        <td><?= $caine->Deces; ?></td>
-                                        
-                                        <td><?= $caine->IesireAdapost; ?></td>
 
                                         <td><?= $caine->NrCip; ?></td>
                                         <td><?= $caine->NrBoxa; ?></td>
@@ -102,9 +101,13 @@
 </div>
 
 <script>
-    $(document).ready(function () {
+    $(document).ready(function() {
         //datatable initialization
         $("#cainiTable").dataTable({
+            dom: 'Bfrtip',
+        buttons: [
+            'copy', 'csv', 'excel', 'pdf', 'print'
+        ]
         });
     });
 </script>

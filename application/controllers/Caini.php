@@ -69,7 +69,14 @@ class Caini extends CI_Controller
             'TelefonApartinator' => $telefon_apartinator
         );
 
-        $result=$this->Caini_model->detectCaine($dataToAdd);
+        //remove empty params from array so we dont have 0000-000-000 in db
+        foreach($dataToAdd as $key => $val){
+            if(trim($val) == ''){
+                unset($dataToAdd[$key]);
+            }
+        }
+
+        $result=$this->Caini_model->detectCaine($numar_cip);
         if ($result) {
              
             $this->session->set_flashdata('error', 'Caine deja existent!');
@@ -78,7 +85,7 @@ class Caini extends CI_Controller
             
             $this->session->set_flashdata('success', 'Cainele a fost adaugat cu success!');
             $result1 = $this->Caini_model->addCaine($dataToAdd);
-            redirect(base_url() . 'caini/adauga_caine/');
+            redirect(base_url() . 'caini/lista_caini/');
         }
 
 
@@ -134,6 +141,14 @@ class Caini extends CI_Controller
             'Deces' => $deces ,
             'TelefonApartinator' => $telefon_apartinator
         );
+
+         //remove empty params from array so we dont have 0000-000-000 in db
+         foreach($dataForUpdate as $key => $val){
+            if(trim($val) == ''){
+                unset($dataForUpdate[$key]);
+            }
+        }
+
         $result = $this->Caini_model->updateCaineInfo($NrCrt, $dataForUpdate);
 
         if ($result > 0) {
