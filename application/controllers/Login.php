@@ -47,6 +47,7 @@ class Login extends CI_Controller
             $this->session->set_userdata('loggedIn', true);
             $this->session->set_userdata('email', $user_info->user_email);
             $this->session->set_userdata('nume', $user_info->user_nume);
+            $this->session->set_userdata('status', $user_info->status);
             $this->session->set_userdata('total_attempts', 0);
 
             redirect(base_url() . 'dashboard');

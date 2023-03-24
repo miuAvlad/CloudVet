@@ -71,7 +71,6 @@
             <h6 class="collapse-header">Gestiune caini:</h6>
 
             <a class="collapse-item" href="<?= base_url(); ?>caini/adauga_caine">Adauga caine</a>
-
             <a class="collapse-item" href="<?= base_url(); ?>caini/lista_caini">Lista caini</a>
 
           </div>
@@ -92,11 +91,10 @@
         <div id="collapseUsers" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header">Gestiune utilizatori:</h6>
-
-            <a class="collapse-item" href="<?= base_url(); ?>utilizatori/adauga_utilizator">Adauga utilizator</a>
-
-            <a class="collapse-item" href="<?= base_url(); ?>utilizatori/lista_utilizatori/">Lista utilizatori</a>
-
+            <?php if ($this->session->userdata('status') == "admin") { ?>
+              <a class="collapse-item" href="<?= base_url(); ?>utilizatori/adauga_utilizator">Adauga utilizator</a>
+              <a class="collapse-item" href="<?= base_url(); ?>utilizatori/lista_utilizatori/">Lista utilizatori</a>
+            <?php } ?>
           </div>
         </div>
       </li>
@@ -154,7 +152,7 @@
               <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
                 <span class="dropdown-item">
                   <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
-                  <?= $this->session->userdata('email'); ?>
+                  <?= $this->session->userdata('status'); ?>
                 </span>
                 <div class="dropdown-divider"></div>
                 <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
