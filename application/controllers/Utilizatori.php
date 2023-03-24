@@ -40,7 +40,7 @@ class Utilizatori extends CI_Controller
     function sterge_utilizator($id_user)
     {
 
-        $result = $this->Utilizatori_model->deleteUser($id_user);
+        $result = $this->Utilizatori_model->deleteUser($id_user); 
         if ($result > 0) {
             redirect(base_url() . 'utilizatori/lista_utilizatori');
         } else {
@@ -57,7 +57,7 @@ class Utilizatori extends CI_Controller
         $data = array(
             'user' => $user_info
         );
-
+        
         $this->load->view('templates/header');
         $this->load->view('utilizatori/editeaza_utilizator', $data);
         $this->load->view('templates/footer');

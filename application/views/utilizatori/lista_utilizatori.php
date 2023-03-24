@@ -5,7 +5,6 @@
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
         <h1 class="h3 mb-0 text-gray-800">Lista utilizatori</h1>
     </div>
-
     <div class="row">
         <!-- DataTales Example -->
         <div class="col-lg-12">
@@ -46,11 +45,11 @@
                                             <a href="<?= base_url() ?>utilizatori/editeaza_utilizator/<?= $utilizator->id_user; ?>" class="btn btn-primary btn-circle">
                                                 <i class="fas fa-arrow-right"></i>
                                             </a>
-
-                                            <a href="<?= base_url() ?>utilizatori/sterge_utilizator/<?= $utilizator->id_user; ?>" class="btn btn-danger btn-circle">
-                                                <i class="fas fa-trash"></i>
-                                            </a>
-
+                                            <?php if ($utilizator->user_email != $this->session->userdata('email')) { ?>
+                                                <a href="<?= base_url() ?>utilizatori/sterge_utilizator/<?= $utilizator->id_user; ?>" class="btn btn-danger btn-circle">
+                                                    <i class="fas fa-trash"></i>
+                                                </a>
+                                            <?php } ?>
                                         </td>
                                     </tr>
                                 <?php endforeach; ?>
@@ -66,9 +65,8 @@
 </div>
 
 <script>
-    $(document).ready(function () {
+    $(document).ready(function() {
         //datatable initialization
-        $("#utilizatoriTable").dataTable({
-        });
+        $("#utilizatoriTable").dataTable({});
     });
 </script>
