@@ -18,15 +18,11 @@
                         <table class="table table-bordered table-striped" id="cainiTable" width="100%" cellspacing="0">
                             <thead>
                                 <tr>
-                                    <th>#</th>
-                                    <th>Data nastere</th>
-                                    <th>Data intrare asapost </th>
-                                    <th>Vaccin antirabic </th>
-                                    <th>Vaccin polivalent </th>
-                                    <th>Deparazitare interna </th>
-                                    <th>Deparazitare externa </th>
-                                    <th>Deces</th>
+                                <th>#</th>
+                                    <th>Varsta</th>
+                                    <th>Data intrare adapost </th>
                                     <th>Iesire adapost </th>
+                                    <th>Deces</th>
                                     <th>Nr cip </th>
                                     <th>Nr boxa</th>
                                     <th>Nume apartinator</th>
@@ -37,16 +33,10 @@
                             <tfoot>
                                 <tr>
                                     <th>#</th>
-                                    <th>Data nastere</th>
-                                    <th>Data intrare asapost </th>
-                                    <th>Vaccin antirabic </th>
-                                    <th>Vaccin polivalent </th>
-                                    <th>Deparazitare interna </th>
-                                    <th>Deparazitare externa </th>
-
-                                    <th>Deces</th>
-
+                                    <th>Varsta</th>
+                                    <th>Data intrare adapost </th>
                                     <th>Iesire adapost </th>
+                                    <th>Deces</th>
                                     <th>Nr cip </th>
                                     <th>Nr boxa</th>
                                     <th>Nume apartinator</th>
@@ -59,16 +49,19 @@
                                 <?php foreach ($caini as $caine) : ?>
                                     <tr>
                                         <td><?= $caine->NrCrt; ?></td>
-                                        <td><?= ($caine->DataNastere) ? date("d.m.Y", strtotime($caine->DataNastere)) : "-"; ?></td>
+                                        <td><?php
+                                         $difference_y = date_diff(date_create($caine->DataNastere),date_create(date("Y-m-d")))->format('%y'); 
+                                         $difference_m = date_diff(date_create($caine->DataNastere),date_create(date("Y-m-d")))->format('%m');
+                                         if($difference_y < 1){
+                                            echo $difference_m." luni";
+                                         }else{
+                                            echo $difference_y." ani si ".$difference_m." luni";
+                                         }
+                                         ?></td>
                                         <td><?= ($caine->DataIntrareAdapost) ? date("d.m.Y", strtotime($caine->DataIntrareAdapost)) : "-"; ?></td>
-                                        <td><?= ($caine->VaccinareAntiRabica) ? date("d.m.Y", strtotime($caine->VaccinareAntiRabica)) : "-"; ?></td>
-                                        <td><?= ($caine->VaccinarePolivalenta) ? date("d.m.Y", strtotime($caine->VaccinarePolivalenta)) : "-"; ?></td>
-                                        <td><?= ($caine->DeparazitareInterna) ? date("d.m.Y", strtotime($caine->DeparazitareInterna)) : "-"; ?></td>
-                                        <td><?= ($caine->DeparazitareExterna) ? date("d.m.Y", strtotime($caine->DeparazitareExterna)) : "-"; ?></td>
-                                        <td><?= ($caine->Deces) ? date("d.m.Y", strtotime($caine->Deces)) : "-"; ?></td>
                                         <td><?= ($caine->IesireAdapost) ? date("d.m.Y", strtotime($caine->IesireAdapost)) : "-"; ?></td>
-
-
+                                        <td><?= ($caine->Deces) ? date("d.m.Y", strtotime($caine->Deces)) : "-"; ?></td>
+                                    
                                         <td><?= $caine->NrCip; ?></td>
                                         <td><?= $caine->NrBoxa; ?></td>
                                         <td><?= $caine->NumeApartinator; ?></td>

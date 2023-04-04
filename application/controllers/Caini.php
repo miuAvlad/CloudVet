@@ -46,10 +46,9 @@ class Caini extends CI_Controller
         $numar_cip = $this->input->post('NrCip');
         $numar_boxa = $this->input->post('NrBoxa');
         $nume_apartinator = $this->input->post('NumeApartinator');
-        $vaccin_antirabic = $this->input->post('VaccinareAntiRabica');
-        $vaccin_polivalent = $this->input->post('VaccinPolivalent');
-        $deparazitare_interna = $this->input->post('DeparazitareInterna');
-        $deparazitare_externa = $this->input->post('DeparazitareExterna');
+        $Talie = $this->input->post('Talie');
+        $Caracter = $this->input->post('Caracter');
+       
         $deces = $this->input->post('Deces');
         $telefon_apartinator = $this->input->post('TelefonApartinator');
 
@@ -61,10 +60,8 @@ class Caini extends CI_Controller
             'NrCip' =>  $numar_cip,
             'NrBoxa' => $numar_boxa ,
             'NumeApartinator' =>  $nume_apartinator,
-            'VaccinareAntiRabica' => $vaccin_antirabic,
-            'VaccinarePolivalenta' =>  $vaccin_polivalent,
-            'DeparazitareInterna' =>  $deparazitare_interna,
-            'DeparazitareExterna' => $deparazitare_externa,
+            'Caracter' =>  $Caracter,
+            'Talie' =>  $Talie,
             'Deces' => $deces ,
             'TelefonApartinator' => $telefon_apartinator,
             'DataAdaugarii' => date("Y-m-d")
@@ -94,13 +91,23 @@ class Caini extends CI_Controller
     public function editeaza_caine($NrCrt)
     {
         $caine = $this->Caini_model->getCaineInfo($NrCrt); 
-        $data = array(
-            'dogs' => $caine
-        );
+ 
+        if($caine != null) {
 
-        $this->load->view('templates/header');
-        $this->load->view('caini/editeaza_caine', $data);
-        $this->load->view('templates/footer');
+            $vaccinuriCaine = $this->Caini_model->getCaineVaccinuri($NrCrt);
+            
+            $data = array(
+                'dogs' => $caine,
+                'vaccinuri' => $vaccinuriCaine
+            );
+    
+            $this->load->view('templates/header');
+            $this->load->view('caini/editeaza_caine', $data);
+            $this->load->view('templates/footer');
+        }else{
+            echo "Cainele nu exista";
+        }
+       
 
     }
     public function sterge_caine($NrCrt)
@@ -112,6 +119,17 @@ class Caini extends CI_Controller
             echo "Cainele nu a putut fi sters.";
         }
     }
+
+    public function sterge_vaccin($id_vaccin)
+    {
+        $result=$this->Caini_model->deleteVaccin($id_vaccin);
+        if ($result > 0) {
+            redirect($_SERVER['HTTP_REFERER']);
+        } else {
+            echo "Vaccinul nu a putut fi sters.";
+        }
+    }
+
     public function update_caine($NrCrt)
     {
         $data_nastere = $this->input->post('DataNastere');
@@ -120,10 +138,8 @@ class Caini extends CI_Controller
         $numar_cip = $this->input->post('NrCip');
         $numar_boxa = $this->input->post('NrBoxa');
         $nume_apartinator = $this->input->post('NumeApartinator');
-        $vaccin_antirabic = $this->input->post('VaccinareAntiRabica');
-        $vaccin_polivalent = $this->input->post('VaccinPolivalent');
-        $deparazitare_interna = $this->input->post('DeparazitareInterna');
-        $deparazitare_externa = $this->input->post('DeparazitareExterna');
+        $Talie = $this->input->post('Talie');
+        $Caracter = $this->input->post('Caracter');
         $deces = $this->input->post('Deces');
         $telefon_apartinator = $this->input->post('TelefonApartinator');
 
@@ -135,10 +151,8 @@ class Caini extends CI_Controller
             'NrCip' =>  $numar_cip,
             'NrBoxa' => $numar_boxa ,
             'NumeApartinator' =>  $nume_apartinator,
-            'VaccinareAntiRabica' => $vaccin_antirabic,
-            'VaccinarePolivalenta' =>  $vaccin_polivalent,
-            'DeparazitareInterna' =>  $deparazitare_interna,
-            'DeparazitareExterna' => $deparazitare_externa,
+            'Talie' => $Talie,
+            'Caracter' =>  $Caracter,
             'Deces' => $deces ,
             'TelefonApartinator' => $telefon_apartinator
         );
@@ -164,6 +178,17 @@ class Caini extends CI_Controller
 
     }
  
+
+    public function adauga_vaccin($id_caine){
+        $postData = $this->input->post();
+        $postData['id_caine'] = $id_caine;
+        $id_vaccin = $this->Caini_model->addVacinCaine($postData);
+        if($id_vaccin){
+            redirect($_SERVER['HTTP_REFERER']);
+        }else{
+            echo "Vaccinul nu a putut fi adaugat";
+        }
+    }
     
     
 }

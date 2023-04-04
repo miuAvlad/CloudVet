@@ -45,7 +45,7 @@
                                             <a href="<?= base_url() ?>utilizatori/editeaza_utilizator/<?= $utilizator->id_user; ?>" class="btn btn-primary btn-circle">
                                                 <i class="fas fa-arrow-right"></i>
                                             </a>
-                                            <?php if ($utilizator->user_email != $this->session->userdata('email')) { ?>
+                                            <?php if ($utilizator->user_email != $this->session->userdata('email') && $utilizator->status!='admin') { ?>
                                                 <a href="<?= base_url() ?>utilizatori/sterge_utilizator/<?= $utilizator->id_user; ?>" class="btn btn-danger btn-circle">
                                                     <i class="fas fa-trash"></i>
                                                 </a>

@@ -60,26 +60,14 @@
 
                         <div class="form-group row">
                             <div class="col-sm-6 mb-3 mb-sm-0">
-                                <label>Vaccin antirabic</label>
-                                <input type="date" class="form-control form-control-user" name="VaccinareAntiRabica" value="<?= $dogs->VaccinareAntiRabica ?>">
+                                <label>Talie</label>
+                                <input type="text" class="form-control form-control-user" name="Talie" value="<?= $dogs->Talie ?>">
                             </div>
                             <div class="col-sm-6">
-                                <label>Vaccin polivalent </label>
-                                <input type="date" class="form-control form-control-user" name="VaccinPolivalent" value="<?= $dogs->VaccinarePolivalenta ?>">
+                                <label>Caracter</label>
+                                <input type="text" class="form-control form-control-user" name="Caracter" value="<?= $dogs->Caracter ?>">
                             </div>
                         </div>
-
-                        <div class="form-group row">
-                            <div class="col-sm-6 mb-3 mb-sm-0">
-                                <label>Deparazitare interna</label>
-                                <input type="date" class="form-control form-control-user" name="DeparazitareInterna" value="<?= $dogs->DeparazitareInterna ?>">
-                            </div>
-                            <div class="col-sm-6">
-                                <label>Deparazitare externa</label>
-                                <input type="date" class="form-control form-control-user" name="DeparazitareExterna" value="<?= $dogs->DeparazitareExterna ?>">
-                            </div>
-                        </div>
-
                         <div class="form-group row">
                             <div class="col-sm-6 mb-3 mb-sm-0">
                                 <label>Telefon apartinator</label>
@@ -91,10 +79,66 @@
                             </div>
                         </div>
 
-                        
+
                         <button class="btn btn-success" type="submit">Actualizeaza informatii</button>
                     </form>
 
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-6 col-md-12">
+            <div class="card shadow mb-4">
+                <div class="card-header py-3">
+                    <h6 class="m-0 font-weight-bold text-primary">Vaccinuri caine</h6>
+                </div>
+                <div class="card-body">
+                    <form class="form-horizontal" method="POST" action="<?= base_url() ?>/caini/adauga_vaccin/<?= $dogs->NrCrt; ?>">
+                        <div class="row">
+                            <div class="form-group col-6">
+                                <label>Tip vaccin</label>
+                                <input type="text" class="form-control" required name="tip_vaccin" minlength="3">
+                            </div>
+                            <div class="form-group col-6">
+                                <label>Data vaccin</label>
+                                <input type="date" class="form-control" required name="data_vaccin">
+                            </div>
+                        </div>
+                        <button type="submit" class="btn btn-success">Adauga vaccin</button>
+                    </form>
+                    <br>
+                    <div class="table table-responsive table-striped">
+                        <table class="table table-bordered table-striped">
+                            <thead>
+                                <tr style="font-weight:600;">
+                                    <td>Tip vaccin</td>
+                                    <td>Data vaccin</td>
+                                    <td></td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <?php foreach ($vaccinuri as $vaccin) : ?>
+                                    <tr>
+                                        <td><?= $vaccin->tip_vaccin ?></td>
+                                        <td><?= date("d.m.Y", strtotime($vaccin->data_vaccin)) ?></td>
+                                        <td><a href="<?= base_url() ?>caini/sterge_vaccin/<?= $vaccin->id_vaccin; ?>" class="btn btn-danger btn-circle">
+                                                <i class="fas fa-sm fa-trash"></i>
+                                            </a></td>
+                                    </tr>
+                                <?php endforeach; ?>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-6 col-md-12">
+            <div class="card shadow mb-4">
+                <div class="card-header py-3">
+                    <h6 class="m-0 font-weight-bold text-danger">Remindere</h6>
+                </div>
+                <div class="card-body">
                 </div>
             </div>
         </div>

@@ -76,6 +76,23 @@
           </div>
         </div>
       </li>
+      <div class="sidebar-heading">
+        Boxe
+      </div>
+
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseBoxe" aria-expanded="true" aria-controls="collapseTwo">
+          <i class="fas fa-fw fa-box"></i>
+          <span>Boxe</span>
+        </a>
+        <div id="collapseBoxe" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+          <div class="bg-white py-2 collapse-inner rounded">
+            <h6 class="collapse-header">Gestiune boxe:</h6>
+            <a class="collapse-item" href="<?= base_url(); ?>boxe/lista_boxe">Lista boxe</a>
+
+          </div>
+        </div>
+      </li>
 
 
       <!-- Heading -->

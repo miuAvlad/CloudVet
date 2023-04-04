@@ -14,6 +14,12 @@ class Caini_model extends CI_Model
         $this->db->delete('dogs');
         return $this->db->affected_rows();
     }
+    public function deleteVaccin($id_vaccin)
+    {
+        $this->db->where('id_vaccin', $id_vaccin);
+        $this->db->delete('dogs_vaccinuri');
+        return $this->db->affected_rows();
+    }
     public function getCaineInfo($NrCrt)
     {
 
@@ -30,6 +36,12 @@ class Caini_model extends CI_Model
     public function addCaine($data)
     {
         $this->db->insert('dogs', $data);
+        return $this->db->affected_rows();
+    }
+    
+    public function addVacinCaine($data)
+    {
+        $this->db->insert('dogs_vaccinuri', $data);
         return $this->db->affected_rows();
     }
 
@@ -49,5 +61,10 @@ class Caini_model extends CI_Model
         $this->db->select('*');
         $this->db->from('dogs');
         return $this->db->get('dogs');
+    }
+
+    public function getCaineVaccinuri($id_caine){
+        $this->db->where("id_caine", $id_caine);
+        return $this->db->get("dogs_vaccinuri")->result();
     }
 }
