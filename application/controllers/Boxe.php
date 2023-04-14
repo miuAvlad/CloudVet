@@ -53,16 +53,17 @@ class Boxe extends CI_Controller
         $boxa = unserialize(urldecode($boxa));  
         $boxa->boxa_nume= $this->input->post('boxa_nume');
         $boxa->boxa_locatie= $this->input->post('boxa_locatie');
+       
+        
         if($this->input->post('NrCip'))
         {
-            
-        }
+            if (str_contains($boxa->boxa_istoric, $this->input->post('NrCip'))) { 
+                $this->session->set_flashdata('error', 'Cainele este deja istoric!');
+                redirect(base_url() . 'boxe/modifica_boxe/' . $boxa->id_boxa);
+            }
+            $boxa->boxa_istoric=$boxa->boxa_istoric."\n".date('Y-m-d a', time())."-A intrat cainele cu CIP:".$this->input->post('NrCip');
         
-        if (str_contains($boxa->boxa_istoric, $this->input->post('NrCip'))) { 
-            $this->session->set_flashdata('error', 'Cainele este deja istoric!');
-            redirect(base_url() . 'boxe/modifica_boxe/' . $boxa->id_boxa);
         }
-        $boxa->boxa_istoric=$boxa->boxa_istoric."\n".date('Y-m-d a', time())."-A intrat cainele cu CIP:".$this->input->post('NrCip');
         $this->load->model('Caini_model', 'caini');
         if($this->caini->detectCaine($this->input->post('NrCip'))==0 && $this->input->post('NrCip'))
         {
