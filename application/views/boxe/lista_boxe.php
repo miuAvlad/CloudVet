@@ -6,9 +6,10 @@
                     <div class="card border-left-primary shadow h-100 py-2">
                         <div class="card-header bg-light position-sticky top-0">
                             <div class="d-flex justify-content-between align-items-center">
-                                <div class="h5 mb-0 font-weight-bold text-gray-600"><?= $boxa->boxa_nume ?><br> <?= $boxa->boxa_locatie ?></br></div>
-                                <a hreaf="<?= base_url() ?>boxe/modifica_boxe" class="btn">
-                                    <i class="fas fa-calendar fixed-top-card fa-2x text-gray-400"></i>
+                                <div class="h5 mb-0 font-weight-bold text-gray-600"><?= $boxa->boxa_nume ?><br> <?= $boxa->boxa_locatie ?><br> Capacitate:<?= $boxa->nr_caini ?>/<?= $boxa->capacitate ?></br></br></div>
+                                <a href="<?= base_url() ?>boxe/modifica_boxe/<?= $boxa->id_boxa ?>" class="btn">
+                                    <i class="fas fa-box fixed-top-card fa-2x text-gray-400" style="position: absolute; top: 10px; right: 10px;"></i>
+
                                 </a>
                             </div>
                         </div>
@@ -18,9 +19,16 @@
 
 
                                     <?php $arr = explode("\n", $boxa->boxa_istoric);
+                                    $count = 0;
                                     foreach ($arr as $item) : ?>
-                                        <div class="text-xs font-weight-bold text-primary text-uppercase mb-1"><?= $item ?></div>
-                                    <?php endforeach; ?>
+                                        <?php if($item):?>
+                                        <div class="text-xs font-weight-bold text-primary text-uppercase mb-1"><?= $item ?>
+                                        <a href="<?php echo base_url() ?>boxe/delete_caine_from_istoric/<?= $count ?>/<?= $boxa->boxa_nume ?>" >
+                                            <i class="fas fa-trash" style="font-size: 12px;"></i>
+                                        </a>
+                                        </div>
+                                        <?php endif;?>
+                                    <?php $count++; endforeach; ?>
                                 </div>
 
                             </div>
@@ -39,17 +47,26 @@
                         <div class="card border-left-primary shadow h-100 py-2">
                             <div class="card-header bg-light position-sticky top-0">
                                 <div class="d-flex justify-content-between align-items-center">
-                                    <div class="h5 mb-0 font-weight-bold text-gray-600"><?= $boxa->boxa_nume ?> <?= $boxa->boxa_locatie ?> </div>
-                                    <i class="fas fa-calendar fixed-top-card fa-2x text-gray-400"></i>
+                                    <div class="h5 mb-0 font-weight-bold text-gray-600"><?= $boxa->boxa_nume ?> <br> <?= $boxa->boxa_locatie ?> <br> Capacitate:<?= $boxa->nr_caini ?>/<?= $boxa->capacitate ?></br></br></div>
+                                    <a href="<?= base_url() ?>boxe/modifica_boxe/<?= $boxa->id_boxa ?>" class="btn">
+                                        <i class="fas fa-box fixed-top-card fa-2x text-gray-400" style="position: absolute; top: 10px; right: 10px;"></i>
+                                    </a>
                                 </div>
                             </div>
                             <div class="card-body">
                                 <div class="row no-gutters align-items-center">
                                     <div class="col mr-2">
                                         <?php $arr = explode("\n", $boxa->boxa_istoric);
+                                        $count=0;
                                         foreach ($arr as $item) : ?>
-                                            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1"><?= $item ?></div>
-                                        <?php endforeach; ?>
+                                         <?php if($item):?>
+                                            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1"><?= $item ?>
+                                        <a href="<?php echo base_url() ?>boxe/delete_caine_from_istoric/<?= $count ?>/<?= $boxa->boxa_nume ?>" >
+                                            <i class="fas fa-trash" style="font-size: 12px;"></i>
+                                        </a>
+                                        </div>
+                                        <?php endif;?>
+                                        <?php $count++;endforeach; ?>
                                     </div>
                                 </div>
                             </div>
@@ -60,5 +77,3 @@
         </div>
     <?php endforeach; ?>
 </div>
-
-

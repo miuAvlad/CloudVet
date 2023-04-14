@@ -10,7 +10,9 @@ class Caini_model extends CI_Model
     }
     public function deleteCaine($NrCrtCaine)
     {
-        $this->db->where('NrCrt', $NrCrtCaine);
+        $result=$this->db->where('NrCrt', $NrCrtCaine);
+        $this->load->model('Boxe_model', 'boxe');
+        $this->boxe->removeFromIstoric($result->NrCip,$result->$NrBoxa);
         $this->db->delete('dogs');
         return $this->db->affected_rows();
     }
@@ -48,7 +50,7 @@ class Caini_model extends CI_Model
     public function detectCaine($numar_cip)
     {
 
-        $this->db->like('NrCip', $numar_cip);
+        $this->db->where('NrCip', $numar_cip);
         $querry = $this->db->get('dogs');
   
         if ($querry->row() > 0) {
@@ -66,5 +68,11 @@ class Caini_model extends CI_Model
     public function getCaineVaccinuri($id_caine){
         $this->db->where("id_caine", $id_caine);
         return $this->db->get("dogs_vaccinuri")->result();
+    }
+    public function updateBoxaCaine($Nr_Cip,$Nr_Boxa)
+    {
+        $sql = " UPDATE dogs SET NrBoxa = ? WHERE NrCip = ?";
+        $this->db->query($sql, array($Nr_Boxa, $Nr_Cip));
+        return $this->db->affected_rows();
     }
 }
