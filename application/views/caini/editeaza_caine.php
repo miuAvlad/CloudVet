@@ -48,9 +48,13 @@
                             </div>
                         </div>
                         <div class="form-group row">
-                            <div class="col-sm-6 mb-3 mb-sm-0">
+                            <div class="col-sm-3 mb-3 mb-sm-0">
                                 <label>Numar boxa</label>
                                 <input type="text" class="form-control form-control-user" name="NrBoxa" value="<?= $dogs->NrBoxa ?>">
+                            </div>
+                            <div class="col-sm-3 mb-3 mb-sm-0">
+                                <label>Vezi boxa</label><br>
+                                <a href="<?= base_url()."/boxe/modifica_boxe/".$dogs->NrBoxa ?>">Boxa <?= $dogs->NrBoxa?></a>
                             </div>
                             <div class="col-sm-6">
                                 <label>Nume apartinator </label>

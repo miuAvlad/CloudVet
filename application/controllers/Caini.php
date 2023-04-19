@@ -66,11 +66,7 @@ class Caini extends CI_Controller
             'DataAdaugarii' => date("Y-m-d")
         );
 
-        ////////////////////////////////
-        if ($numar_boxa) {
-            $this->load->model('Boxe_model', 'boxe');
-            $x = $this->boxe->addToIstoric($numar_cip, $numar_boxa);
-        }
+   
         ////////////////////////////////
         //remove empty params from array so we dont have 0000-000-000 in db
         foreach ($dataToAdd as $key => $val) {
@@ -143,13 +139,7 @@ class Caini extends CI_Controller
         $Caracter = $this->input->post('Caracter');
         $deces = $this->input->post('Deces');
         $telefon_apartinator = $this->input->post('TelefonApartinator');
-        ////////////////////////////////
-        if ($numar_boxa) {
-            $this->load->model('Boxe_model', 'boxe');
-            $this->boxe->removeFromIstoric($numar_cip, $numar_boxa, 1); // nu da remove din boxa in care era pt ca nu am valoarea precedenta 
-            $x = $this->boxe->addToIstoric($numar_cip, $numar_boxa); // adauga la iustoric
-        }
-        ////////////////////////////////
+
         $dataForUpdate = array(
             'DataNastere' => $data_nastere,
             'DataIntrareAdapost' =>   $data_intrare,
@@ -172,7 +162,7 @@ class Caini extends CI_Controller
 
         $result = $this->Caini_model->updateCaineInfo($NrCrt, $dataForUpdate);
 
-        if ($result > 0 && $x > 0) {
+        if ($result > 0) {
             //set flash message
             $this->session->set_flashdata('success', 'Utilizatorul a fost actualizat cu success!');
 

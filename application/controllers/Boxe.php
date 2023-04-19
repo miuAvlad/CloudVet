@@ -21,8 +21,15 @@ class Boxe extends CI_Controller
     ////////////////////////////////////////////////////////////////
     public function lista_boxe()
     {
+        $boxe = $this->Boxe_model->getAllBoxes();
+        foreach ($boxe as $boxa) {
+            $cainiBoxa = $this->Boxe_model->getCainiByBoxa($boxa->id_boxa);
+            $boxa->caini = $cainiBoxa;
+            $boxa->nr_caini = count($cainiBoxa);
+        }
+
         $data = array(
-            'boxe' => $this->Boxe_model->getAllBoxes()
+            'boxe' => $boxe
         );
         $this->load->view('templates/header');
         $this->load->view('boxe/lista_boxe', $data);
@@ -32,11 +39,13 @@ class Boxe extends CI_Controller
     public function modifica_boxe($id_boxa)
     {
         $boxa = $this->Boxe_model->getBoxaInfo($id_boxa);
+        $cainiBoxa = $this->Boxe_model->getCainiByBoxa($id_boxa);
         if ($boxa != null) {
 
 
             $data = array(
-                'boxe' => $boxa,
+                'boxa' => $boxa,
+                'cainiBoxa' => $cainiBoxa
             );
 
             $this->load->view('templates/header');
@@ -45,55 +54,35 @@ class Boxe extends CI_Controller
         } else {
             echo "boxa not found";
         }
-
-       
     }
-    public function update_boxe($boxa)
+    public function update_boxe($id_boxa)
     {
-        $boxa = unserialize(urldecode($boxa));  
-        $boxa->boxa_nume= $this->input->post('boxa_nume');
-        $boxa->boxa_locatie= $this->input->post('boxa_locatie');
-       
         
-        if($this->input->post('NrCip'))
-        {
-            if (str_contains($boxa->boxa_istoric, $this->input->post('NrCip'))) { 
-                $this->session->set_flashdata('error', 'Cainele este deja istoric!');
-                redirect(base_url() . 'boxe/modifica_boxe/' . $boxa->id_boxa);
-            }
-            $boxa->boxa_istoric=$boxa->boxa_istoric."\n".date('Y-m-d a', time())."-A intrat cainele cu CIP:".$this->input->post('NrCip');
-        
-        }
-        $this->load->model('Caini_model', 'caini');
-        if($this->caini->detectCaine($this->input->post('NrCip'))==0 && $this->input->post('NrCip'))
-        {
-            $this->session->set_flashdata('error', 'Cainele nu exista in baza de date!');
-            redirect(base_url() . 'boxe/modifica_boxe/' . $boxa->id_boxa);
-        }
-        $result = $this->Boxe_model->updateBoxa($boxa);
+        $postData = $this->input->post();
+            
+        $result = $this->Boxe_model->updateBoxa($id_boxa, $postData);
         if ($result > 0) {
             //set flash message
             $this->session->set_flashdata('success', 'Modificarea a fost facuta!');
 
-            redirect(base_url() . 'boxe/modifica_boxe/' . $boxa->id_boxa);
+            redirect(base_url() . 'boxe/modifica_boxe/' . $id_boxa);
         } else {
             $this->session->set_flashdata('error', 'Nimic nu a fost schimbat!');
-            redirect(base_url() . 'boxe/modifica_boxe/' . $boxa->id_boxa);
+            redirect(base_url() . 'boxe/modifica_boxe/' . $id_boxa);
         }
-
     }
-    
-    public function delete_caine_from_istoric($line,$NumeBoxa)
+
+    public function delete_caine_from_boxa($boxa, $caine)
     {
-        $result = $this->Boxe_model->removeFromIstoric($line,$NumeBoxa,0);
-        if($result==-11)
-        {
-            $this->session->set_flashdata('error', 'Cainele nu exista in baza de date!');
-            redirect(base_url() . 'boxe/lista_boxe/');
-        }
+        //load caine model
+        $this->load->model('Caini_model');
+
+        $result = $this->Caini_model->updateCaineInfo($caine, array(
+            'NrBoxa' => NULL
+        ));
+
         if ($result > 0) {
-            //set flash message
-            $this->session->set_flashdata('success', 'Utilizatorul a fost actualizat cu success!');
+            $this->session->set_flashdata('success', 'Cainele a fost scos din boxa.');
             redirect(base_url() . 'boxe/lista_boxe/');
         } else {
             $this->session->set_flashdata('error', 'Nimic nu a fost schimbat!');
