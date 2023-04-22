@@ -169,13 +169,7 @@
                             <?php endforeach; ?>
                         </tbody>
                     </table>
-                    <?php foreach ($vaccinuri as $vaccin) :
-                        if ($vaccin->data_expirare <= date("Y-m-d")) : ?>
-
-                            Vaccin <?= $vaccin->tip_vaccin ?> expirat <br>
-
-                    <?php endif;
-                    endforeach; ?>
+                    
                 </div>
             </div>
         </div>
