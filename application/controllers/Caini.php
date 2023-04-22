@@ -94,10 +94,12 @@ class Caini extends CI_Controller
         if ($caine != null) {
 
             $vaccinuriCaine = $this->Caini_model->getCaineVaccinuri($NrCrt);
+            $remindereCaine = $this->Caini_model->getCaineRemindere($NrCrt);
 
             $data = array(
                 'dogs' => $caine,
-                'vaccinuri' => $vaccinuriCaine
+                'vaccinuri' => $vaccinuriCaine,
+                'remindere'=>$remindereCaine
             );
 
             $this->load->view('templates/header');
@@ -178,7 +180,20 @@ class Caini extends CI_Controller
     {
         $postData = $this->input->post();
         $postData['id_caine'] = $id_caine;
+        foreach ($postData as $key => $val) {
+            if (trim($val) == '') {
+                unset($postData[$key]);
+            }
+        }
         $id_vaccin = $this->Caini_model->addVacinCaine($postData);
+        $datarem = array(
+            'id_dog'=>$postData['id_caine'],
+            'text_reminder'=>"de refacut ".$postData['tip_vaccin'],
+            'data_reminder'=>$postData['data_expirare'],
+            'seen_reminder'=>0,
+        );
+        $this->Caini_model->addReminderCaine($datarem);
+
         if ($id_vaccin) {
             redirect($_SERVER['HTTP_REFERER']);
         } else {

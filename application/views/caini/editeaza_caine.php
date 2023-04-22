@@ -54,7 +54,9 @@
                             </div>
                             <div class="col-sm-3 mb-3 mb-sm-0">
                                 <label>Vezi boxa</label><br>
-                                <a href="<?= base_url()."/boxe/modifica_boxe/".$dogs->NrBoxa ?>">Boxa <?= $dogs->NrBoxa?></a>
+                                <?php if (base_url() . "/boxe/detect_boxe/" . $dogs->NrBoxa == 1) { ?>
+                                    <a href="<?= base_url() . "/boxe/modifica_boxe/" . $dogs->NrBoxa ?>">Boxa <?= $dogs->NrBoxa ?></a>
+                                <?php } ?>
                             </div>
                             <div class="col-sm-6">
                                 <label>Nume apartinator </label>
@@ -108,6 +110,10 @@
                                 <label>Data vaccin</label>
                                 <input type="date" class="form-control" required name="data_vaccin">
                             </div>
+                            <div class="form-group col-6">
+                                <label>Data expirare </label>
+                                <input type="date" class="form-control" required name="data_expirare">
+                            </div>
                         </div>
                         <button type="submit" class="btn btn-success">Adauga vaccin</button>
                     </form>
@@ -118,6 +124,7 @@
                                 <tr style="font-weight:600;">
                                     <td>Tip vaccin</td>
                                     <td>Data vaccin</td>
+                                    <td>Data expirare </td>
                                     <td></td>
                                 </tr>
                             </thead>
@@ -126,6 +133,7 @@
                                     <tr>
                                         <td><?= $vaccin->tip_vaccin ?></td>
                                         <td><?= date("d.m.Y", strtotime($vaccin->data_vaccin)) ?></td>
+                                        <td><?= date("d.m.Y", strtotime($vaccin->data_expirare)) ?></td>
                                         <td><a href="<?= base_url() ?>caini/sterge_vaccin/<?= $vaccin->id_vaccin; ?>" class="btn btn-danger btn-circle">
                                                 <i class="fas fa-sm fa-trash"></i>
                                             </a></td>
@@ -143,6 +151,31 @@
                     <h6 class="m-0 font-weight-bold text-danger">Remindere</h6>
                 </div>
                 <div class="card-body">
+                    <table class="table table-bordered table-striped">
+                        <thead>
+                            <tr style="font-weight:600;">
+                                <td>remider</td>
+                                <td>Data reminder</td>
+                               
+                               
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php foreach ($remindere as $rem) : ?>
+                                <tr>
+                                    <td><?= $rem->text_reminder ?></td>
+                                    <td><?= date("d.m.Y", strtotime($rem->data_reminder)) ?></td>
+                                </tr>
+                            <?php endforeach; ?>
+                        </tbody>
+                    </table>
+                    <?php foreach ($vaccinuri as $vaccin) :
+                        if ($vaccin->data_expirare <= date("Y-m-d")) : ?>
+
+                            Vaccin <?= $vaccin->tip_vaccin ?> expirat <br>
+
+                    <?php endif;
+                    endforeach; ?>
                 </div>
             </div>
         </div>

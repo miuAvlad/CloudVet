@@ -89,9 +89,10 @@
           <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header">Gestiune boxe:</h6>
             <a class="collapse-item" href="<?= base_url(); ?>boxe/lista_boxe">Lista boxe</a>
-
+            <a class="collapse-item" href="<?= base_url(); ?>boxe/adauga_boxe">Adauga boxa</a>
           </div>
         </div>
+        
       </li>
 
 

@@ -28,6 +28,7 @@ class Dashboard extends CI_Controller
         $data = array(
             'numar_users' => $nrUsers,
             'numar_caini' =>  $this->Dashboard_model->getCountCaini(),
+            'remindere'=>$this->Dashboard_model->getRemindere(),
             'nrCainiPerLuna' => $nrCainiPerLuna
         );
 

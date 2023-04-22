@@ -22,8 +22,9 @@
                             foreach ($cainiBoxa as $caine) : ?>
 
                                 <div class="text-md font-weight-bold text-primary text-uppercase mb-1">
-                                    <a href="<?php echo base_url() ?>/caini/editeaza_caine/<?= $caine->NrCrt ?>"><?= @$caine->NrCip ?> - Varsta: Talie(<?= $caine->Talie ?>) Caracter(<?= $caine->Caracter ?>)</a>
-                                    <a style="color:red;" href="<?php echo base_url() ?>boxe/delete_caine_from_boxa/<?= @$boxa->id_boxa ?>/<?= @$caine->NrCrt ?>">
+                                    <a href="<?php echo base_url() ?>/caini/editeaza_caine/<?= $caine->NrCrt ?>">CIP:<?= $caine->NrCip ?> // Varsta: <?php $diff = date_diff(date_create($caine->DataNastere), date_create(date("Y-m")));
+                                                                                                                                                        echo $diff->format('%y') . " ani " . $diff->format('%m') . " luni " ?> // Talie(<?= $caine->Talie ?>) // Caracter(<?= $caine->Caracter ?>)</a>
+                                    <a style="color:red;" href="<?php echo base_url() ?>boxe/delete_caine_from_boxa/<?= $boxa->id_boxa ?>/<?= $caine->NrCrt ?>">
                                         <i class="fas fa-trash" style="font-size: 18px;"></i>
                                     </a>
                                 </div>
@@ -51,11 +52,10 @@
                             <?= $this->session->flashdata('error'); ?>
                         </div>
                     <?php endif; ?>
-      
+
                     <form method="POST" action="<?php echo base_url() ?>boxe/update_boxe/<?= $boxa->id_boxa ?>">
 
                         <div class="row">
-
                             <div class="form-group col-8">
                                 <label>Nume boxa</label>
                                 <input type="text" class="form-control" required name="boxa_nume" value="<?= $boxa->boxa_nume ?>" minlength="3">
@@ -70,6 +70,11 @@
                             </div>
                         </div>
                         <button class="btn btn-success" type="submit">Actualizeaza informatii</button>
+                        
+                        <a href="<?= base_url() ?>boxe/sterge_boxa/<?=$boxa->id_boxa?>" class="btn btn-danger">
+                            Sterge boxa
+                        </a>
+                       
                     </form>
 
                 </div>
