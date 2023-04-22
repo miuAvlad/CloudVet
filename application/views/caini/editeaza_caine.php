@@ -49,7 +49,7 @@
                         </div>
                         <div class="form-group row">
                             <div class="col-sm-3 mb-3 mb-sm-0">
-                                <label>Numar boxa</label>
+                                <label>ID boxa</label>
                                 <input type="text" class="form-control form-control-user" name="NrBoxa" value="<?= $dogs->NrBoxa ?>">
                             </div>
                             <div class="col-sm-3 mb-3 mb-sm-0">

@@ -24,7 +24,7 @@
                                     <th>Iesire adapost </th>
                                     <th>Deces</th>
                                     <th>Nr cip </th>
-                                    <th>Nr boxa</th>
+                                    <th>ID boxa</th>
                                     <th>Nume apartinator</th>
                                     <th>Telefon apartinator </th>
                                     <th>Actiuni</th>
@@ -38,7 +38,7 @@
                                     <th>Iesire adapost </th>
                                     <th>Deces</th>
                                     <th>Nr cip </th>
-                                    <th>Nr boxa</th>
+                                    <th>ID boxa</th>
                                     <th>Nume apartinator</th>
                                     <th>Telefon apartinator </th>
                                     <th>Actiuni</th>
