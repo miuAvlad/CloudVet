@@ -22,7 +22,7 @@
                             foreach ($cainiBoxa as $caine) : ?>
 
                                 <div class="text-md font-weight-bold text-primary text-uppercase mb-1">
-                                    <a href="<?php echo base_url() ?>/caini/editeaza_caine/<?= $caine->NrCrt ?>">CIP:<?= $caine->NrCip ?> // Varsta: <?php $diff = date_diff(date_create($caine->DataNastere), date_create(date("Y-m")));
+                                    <a href="<?php echo base_url() ?>/caini/editeaza_caine/<?= $caine->NrCrt ?>/0/NULL">CIP:<?= $caine->NrCip ?> // Varsta: <?php $diff = date_diff(date_create($caine->DataNastere), date_create(date("Y-m")));
                                                                                                                                                         echo $diff->format('%y') . " ani " . $diff->format('%m') . " luni " ?> // Talie(<?= $caine->Talie ?>) // Caracter(<?= $caine->Caracter ?>)</a>
                                     <a style="color:red;" href="<?php echo base_url() ?>boxe/delete_caine_from_boxa/<?= $boxa->id_boxa ?>/<?= $caine->NrCrt ?>">
                                         <i class="fas fa-trash" style="font-size: 18px;"></i>
