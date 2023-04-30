@@ -72,7 +72,7 @@
                                             <a href="<?= base_url() ?>caini/adauga_caine/" class="btn btn-success btn-circle">
                                                 <i class="fas fa-plus"></i>
                                             </a>
-                                            <a href="<?= base_url() ?>caini/editeaza_caine/<?= $caine->NrCrt; ?>" class="btn btn-primary btn-circle">
+                                            <a href="<?= base_url() ?>caini/editeaza_caine/<?= $caine->NrCrt; ?>/0/NULL" class="btn btn-primary btn-circle">
                                                 <i class="fas fa-arrow-right"></i>
                                             </a>
 

@@ -94,4 +94,16 @@ class Caini_model extends CI_Model
         $this->db->insert('remindere', $data);
         return $this->db->affected_rows();
     }
+    public function seenReminder($id_reminder)
+    {
+        $sql = " UPDATE remindere SET seen_reminder = ? WHERE id_reminder = ?";
+        $this->db->query($sql, array(1, $id_reminder));
+        return $this->db->affected_rows();
+    }
+    public function removeReminder($id_reminder)
+    {
+        $this->db->where('id_reminder', $id_reminder);
+        $this->db->delete('remindere');
+        return $this->db->affected_rows();
+    }
 }

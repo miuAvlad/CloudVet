@@ -74,7 +74,9 @@
                 <div class="h5 mb-0 font-weight-bold text-gray-800"><?= $rem->text_reminder; ?> </div>
               </div>
               <div class="col-auto">
-                <a href="<?= base_url() ?>caini/editeaza_caine/<?= $rem->id_dog?>"><i class="fas fa-dog fa-2x text-gray-300"></i></a>
+                <a href="<?= base_url() ?>caini/editeaza_caine/<?= $rem->id_dog ?>/1/<?= $rem->id_reminder ?>">
+                  <i class="fas fa-dog fa-2x text-gray-300"></i>
+                </a>
               </div>
             </div>
           </div>

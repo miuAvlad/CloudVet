@@ -19,7 +19,7 @@
 
                                     <?php foreach ($boxa->caini as $caine) : ?>
                                         <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
-                                            <a href="<?php echo base_url() ?>/caini/editeaza_caine/<?= $caine->NrCrt ?>">
+                                            <a href="<?php echo base_url() ?>/caini/editeaza_caine/<?= $caine->NrCrt ?>/0/NULL">
                                                Intrare adapost:<?= $caine->DataIntrareAdapost ?> // CIP:<?= $caine->NrCip ?> // Varsta: <?php  $diff=date_diff(date_create($caine->DataNastere), date_create(date("Y-m"))); echo $diff->format('%y')." ani ".$diff->format('%m')." luni "?>
                                             </a>
                                             <a href="<?php echo base_url() ?>boxe/delete_caine_from_boxa/<?= $boxa->id_boxa ?>/<?= $caine->NrCrt ?>">

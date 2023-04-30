@@ -156,8 +156,9 @@
                             <tr style="font-weight:600;">
                                 <td>remider</td>
                                 <td>Data reminder</td>
-                               
-                               
+                                <td></td>
+
+
                             </tr>
                         </thead>
                         <tbody>
@@ -165,11 +166,14 @@
                                 <tr>
                                     <td><?= $rem->text_reminder ?></td>
                                     <td><?= date("d.m.Y", strtotime($rem->data_reminder)) ?></td>
+                                    <td><a href="<?= base_url() ?>caini/sterge_reminder/<?= $rem->id_reminder ?>" class="btn btn-danger btn-circle">
+                                            <i class="fas fa-sm fa-trash"></i>
+                                        </a></td>
                                 </tr>
                             <?php endforeach; ?>
                         </tbody>
                     </table>
-                    
+
                 </div>
             </div>
         </div>

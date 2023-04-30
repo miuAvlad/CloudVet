@@ -26,6 +26,7 @@ class Dashboard_model extends CI_Model{
     }
     public function getRemindere()
     {   $this->db->where("data_reminder <=", date("Y-m-d"));
+        $this->db->where("seen_reminder", 0);
         $result=$this->db->get('remindere')->result();
         return $result;
     }

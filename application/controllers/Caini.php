@@ -87,9 +87,14 @@ class Caini extends CI_Controller
             redirect(base_url() . 'caini/lista_caini/');
         }
     }
-    public function editeaza_caine($NrCrt)
+    public function editeaza_caine($NrCrt,$int,$id_reminder)
     {
         $caine = $this->Caini_model->getCaineInfo($NrCrt);
+        if($int==1)
+        {
+            $this->Caini_model->seenReminder($id_reminder);
+        
+        }
 
         if ($caine != null) {
 
@@ -199,5 +204,9 @@ class Caini extends CI_Controller
         } else {
             echo "Vaccinul nu a putut fi adaugat";
         }
+    }
+    public function sterge_reminder($id_reminder)
+    {
+        $this->Caini_model->removeReminder($id_reminder);
     }
 }
