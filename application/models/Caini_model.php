@@ -74,7 +74,7 @@ class Caini_model extends CI_Model
     public function getCaineRemindere($id_caine)
     {
         $this->db->where("id_dog", $id_caine);
-        $this->db->where("data_reminder <=", date("Y-m-d"));
+        //$this->db->where("data_reminder <=", date("Y-m-d"));
         return $this->db->get("remindere")->result();
         // $sql="SELECT text_reminder,data_reminder FROM remindere WHERE data_reminder <= ?";
         // $query=$this->db->query($sql,date("Y-m-d"));

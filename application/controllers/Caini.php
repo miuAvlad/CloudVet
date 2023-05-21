@@ -87,7 +87,7 @@ class Caini extends CI_Controller
             redirect(base_url() . 'caini/lista_caini/');
         }
     }
-    public function editeaza_caine($NrCrt,$int,$id_reminder)
+    public function editeaza_caine($NrCrt,$int=null,$id_reminder=null)
     {
         $caine = $this->Caini_model->getCaineInfo($NrCrt);
         if($int==1)
@@ -208,5 +208,6 @@ class Caini extends CI_Controller
     public function sterge_reminder($id_reminder)
     {
         $this->Caini_model->removeReminder($id_reminder);
+        redirect($_SERVER['HTTP_REFERER']);
     }
 }

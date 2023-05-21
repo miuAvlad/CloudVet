@@ -122,12 +122,12 @@ class Utilizatori extends CI_Controller
          if ($result) {
              
              $this->session->set_flashdata('error', 'Adresa de email corespunde deja unui utilizator!');
-             redirect(base_url() . 'utilizatori/adauga_utilizator/' . $id_user);
+             redirect(base_url() . 'utilizatori/adauga_utilizator/' . $result->id_user);
          } else {
              
              $this->session->set_flashdata('success', 'Utilizatorul a fost adaugat cu success!');
              $result1 = $this->Utilizatori_model->insertUser($dataToAdd);
-             redirect(base_url() . 'utilizatori/adauga_utilizator/' . $id_user);
+             redirect(base_url() . 'utilizatori/adauga_utilizator/' . $result->id_user);
          }
     }
   
